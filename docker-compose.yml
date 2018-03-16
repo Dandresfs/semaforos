@@ -40,6 +40,8 @@ services:
     command: gunicorn semaforos.wsgi -b 0.0.0.0:8000
     volumes:
       - ./web:/web
+    devices:
+      - "/dev/ttyAMA0:/dev/ttyAMA0"
     expose:
       - "8000"
 
