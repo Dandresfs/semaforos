@@ -1,0 +1,41 @@
+extends base
+
+block title
+    |Dashboard
+
+block body_content
+
+    body#page-top.fixed-nav.sticky-footer
+        nav#mainNav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+            a.navbar-brand(href='index.html') Semaforos
+            button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarResponsive.collapse.navbar-collapse
+                ul.navbar-nav.sidenav-toggler
+                    li.nav-item
+                        a#sidenavToggler.nav-link.text-center
+                            i.fa.fa-fw.fa-angle-left
+                ul.navbar-nav.ml-auto
+
+                    li.nav-item
+                        a.nav-link(href="/logout")
+                            i.fa.fa-fw.fa-sign-out
+                            | Cerrar sesión
+
+        .row.mt-3
+            .container
+                .col-lg-2
+                    form
+                        .form-group
+                            label(for="serial") Puerto:
+                            select#serial.form-control
+                                |{% for port in serial_ports %}
+                                option {{ port }}
+                                |{% endfor %}
+
+
+
+block body_script
+    script.
+        $(document).ready(function () {
+        });

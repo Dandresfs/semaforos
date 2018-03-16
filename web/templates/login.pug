@@ -1,0 +1,27 @@
+extends base
+
+block title
+    |Iniciar sesión
+
+block body_content
+
+
+
+
+    body.bg-dark
+        .container
+            .row.mt-5
+                .col-lg-4.offset-lg-4.col-md-6.offset-md-3.col-sm-8.offset-sm-2
+                    .card.card-login
+                        .card-header
+                            | Iniciar sesión
+                        .card-body
+                            form(action="",method="POST",enctype="multipart/form-data")
+                                | {% crispy form %}
+
+
+
+block body_script
+    script.
+        $(document).ready(function () {
+        });

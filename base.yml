@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+
+  nginx:
+    image: nginx:1.13.9
+    container_name: 'nginx_sican'
+
+  db:
+    image: postgres:10.3
+    container_name: 'postgres_sican'
+    env_file: .env
+    volumes:
+      - db_data:/var/lib/postgresql/data/pgdata
+
+  web:
+    build:
+      context: ./web
+    env_file: .env

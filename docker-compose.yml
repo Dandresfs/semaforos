@@ -1,0 +1,48 @@
+version: "2"
+
+services:
+
+  nginx:
+    restart: always
+    extends:
+      file: base.yml
+      service: nginx
+    ports:
+      - "80:80"
+
+    depends_on:
+      - web
+
+    volumes:
+      - ./web:/web
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+
+  db:
+    restart: always
+    extends:
+      file: base.yml
+      service: db
+
+
+  web:
+    image: 'semaforos:latest'
+    extends:
+      file: base.yml
+      service: web
+
+    build:
+      args:
+        DJANGO_ENV: prod
+
+    restart: always
+    env_file: .env
+
+    command: gunicorn semaforos.wsgi -b 0.0.0.0:8000
+    volumes:
+      - ./web:/web
+    expose:
+      - "8000"
+
+volumes:
+  db_data:
+    external: true

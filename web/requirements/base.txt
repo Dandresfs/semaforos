@@ -1,0 +1,7 @@
+django==2.0.3
+psycopg2-binary==2.7.4
+psycopg2==2.7.4
+django-crispy-forms==1.7.1
+crispy-forms-materialize==0.2
+pyserial==3.4
+django-braces==1.12.0
